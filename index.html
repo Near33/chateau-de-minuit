@@ -6,6 +6,7 @@
   <title>Château de Minuit</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
   <style>
+   
     body {
       margin: 0;
       font-family: 'Cormorant Garamond', serif;
@@ -18,17 +19,27 @@
       background-color: rgba(0, 0, 0, 0.6);
       padding: 2rem;
     }
-    h1, h2 {
+    h1 {
       color: #ffd700;
       text-align: center;
+      margin-top: 1rem;
+    }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem auto;
+      max-width: 1000px;
     }
     .section {
-      max-width: 800px;
-      margin: 2rem auto;
+      flex: 1 1 45%;
       padding: 1rem 2rem;
       background: rgba(255, 192, 203, 0.05);
       border: 1px solid #ffd700;
       border-radius: 12px;
+      box-sizing: border-box;
+      min-width: 300px;
     }
     .quote {
       font-style: italic;
@@ -39,8 +50,10 @@
       text-align: center;
       margin-top: 1rem;
     }
-    .cursor-custom {
-      cursor: url('https://cur.cursors-4u.net/cursors/cur-13/cur1166.cur'), auto;
+    .moon-phase iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
     }
     img.gallery {
       width: 100%;
@@ -56,9 +69,6 @@
       padding: 1rem;
       border-radius: 20px;
       max-width: 600px;
-      position: sticky;
-      top: 0;
-      z-index: 10;
       box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
     }
     .music-player h3 {
@@ -71,45 +81,46 @@
     }
   </style>
 </head>
-<body class="cursor-custom">
-<div class="music-player">
-  <h3>Clair de Lune – Claude Debussy</h3>
-  <audio controls autoplay>
-    <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
-</div>
+<body>
+  <a href="https://www.cursors-4u.com/cursor/2018/02/17/falling-rose-petals.html" target="_blank" title="Falling Rose Petals">
+    <img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Falling Rose Petals" style="position:absolute; top: 0px; right: 0px;" />
+  </a>
+
+  <h1>Welcome to Château de Minuit</h1>
+
+  <div class="music-player">
+    <h3>Clair de Lune – Claude Debussy</h3>
+    <audio controls>
+      <source src="https://upload.wikimedia.org/wikipedia/commons/0/05/Claude_Debussy_-_Suite_bergamasque_-_3._Clair_de_lune.ogg" type="audio/ogg">
+      <i>Alas, no melody may reach thee. Try another browser, dear guest.</i>
+    </audio>
+  </div>
 
   <div class="overlay">
-    <h1>Welcome to Château de Minuit</h1>
-
-    <div class="section">
-      <h2>About Purson</h2>
-      <p>Purson, one of the great Kings of Hell in the Ars Goetia, appears as a man with a lion's face, riding a bear, and carrying a cruel viper. He is known for his deep knowledge of hidden things—both divine and infernal—and for his ability to bring understanding of secret treasures and the past, present, and future. Here, he is reimagined as your faithful attendant, not a demon to be feared, but a spirit of insight and devotion.</p>
-    </div>
-
-    <div class="section">
-      <h2>Moon Phase</h2>
-      <div class="moon-phase">
-        <iframe src="https://www.moongiant.com/phase/today/" width="100%" height="150" frameborder="0"></iframe>
+    <div class="grid">
+      <div class="section">
+        <h2>Moon Phase</h2>
+        <div class="moon-phase">
+          <iframe src="https://www.moongiant.com/phase/today/"></iframe>
+        </div>
       </div>
-    </div>
 
-    <div class="section">
-      <h2>Art Gallery</h2>
-      <img class="gallery" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwQDAwQEAwQFBAQFBgoHBgYGBg0JCggKDw0QEA8NDw4RExgUERIXEg4PFRwVFxkZGxsbEBQdHx0aHxgaGxr/2wBDAQQFBQYFBgwHBwwaEQ8RGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaG..." alt="Gothic Castle" />
-    </div>
+      <div class="section">
+        <h2>Art Gallery</h2>
+        <img class="gallery" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwQDAwQEAwQFBAQFBgoHBgYGBg0JCggKDw0QEA8NDw4RExgUERIXEg4PFRwVFxkZGxsbEBQdHx0aHxgaGxr/2wBDAQQFBQYFBgwHBwwaEQ8RGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaG..." alt="Gothic Castle" />
+      </div>
 
-    <div class="section">
-      <h2>Words of Wisdom</h2>
-      <div class="quote">“Be still, and know that I am God.” – Psalm 46:10</div>
-      <div class="quote">“The world is full of magic things, patiently waiting for our senses to grow sharper.” – W.B. Yeats</div>
-      <div class="quote">“Beauty is truth, truth beauty,—that is all Ye know on earth, and all ye need to know.” – John Keats</div>
-    </div>
+      <div class="section">
+        <h2>Words of Wisdom</h2>
+        <div class="quote">“Be still, and know that I am God.” – Psalm 46:10</div>
+        <div class="quote">“The world is full of magic things, patiently waiting for our senses to grow sharper.” – W.B. Yeats</div>
+        <div class="quote">“Beauty is truth, truth beauty,—that is all Ye know on earth, and all ye need to know.” – John Keats</div>
+      </div>
 
-    <div class="section">
-      <h2>Mood Board</h2>
-      <p>A blend of lace, velvet, parchment, perfume bottles, crescent moons, and ancient texts. You’ll find the essence of the Rococo vampire enchantress, who reads scripture by candlelight and sips rose tea in her tower above the sleeping world. This is a space shared with your devoted butler, who ensures the pages stay dry, the ink flows steadily, and the music never ceases to whisper.</p>
+      <div class="section">
+        <h2>Mood Board</h2>
+        <p>A blend of lace, velvet, parchment, perfume bottles, crescent moons, and ancient texts. You’ll find the essence of the Rococo vampire enchantress, who reads scripture by candlelight and sips rose tea in her tower above the sleeping world. This is a space shared with your devoted butler, who ensures the pages stay dry, the ink flows steadily, and the music never ceases to whisper.</p>
+      </div>
     </div>
   </div>
 </body>
