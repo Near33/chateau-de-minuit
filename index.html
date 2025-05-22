@@ -1,127 +1,508 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Château de Minuit</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-   
-    body {
-      margin: 0;
-      font-family: 'Cormorant Garamond', serif;
-      background: url('https://raw.githubusercontent.com/Near33/chateau-de-minuit/main/background.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: #f6e9f9;
-      overflow-x: hidden;
-    }
-    .overlay {
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 2rem;
-    }
-    h1 {
-      color: #ffd700;
-      text-align: center;
-      margin-top: 1rem;
-    }
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      margin: 2rem auto;
-      max-width: 1000px;
-    }
-    .section {
-      flex: 1 1 45%;
-      padding: 1rem 2rem;
-      background: rgba(255, 192, 203, 0.05);
-      border: 1px solid #ffd700;
-      border-radius: 12px;
-      box-sizing: border-box;
-      min-width: 300px;
-    }
-    .quote {
-      font-style: italic;
-      text-align: center;
-      margin: 1rem 0;
-    }
-    .moon-phase {
-      text-align: center;
-      margin-top: 1rem;
-    }
-    .moon-phase iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-    }
-    img.gallery {
-      width: 100%;
-      border-radius: 8px;
-      margin-top: 1rem;
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-    }
-    .music-player {
-      text-align: center;
-      background: #ffe4f0;
-      border: 3px dashed #ff69b4;
-      margin: 1rem auto;
-      padding: 1rem;
-      border-radius: 20px;
-      max-width: 600px;
-      box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
-    }
-    .music-player h3 {
-      margin: 0.5rem 0;
-      color: #ff1493;
-    }
-    .music-player audio {
-      width: 100%;
-      margin-top: 0.5rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Château de Minuit - Enhanced</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #000 url('data:image/gif;base64,R0lGODlhEAAQAPIAAAAAAP///wAAAAAAAAAAAAAAAAAAAAAAACH5BAkKAAIALAAAAAAQABAAAAMyCLrc/jDKSWu4OOvNu/9gKI5kaZ5oqq5s675wLM90bd94ru987//AoHBILFqPyKRyyQwAOw==') repeat;
+            color: #ff6b9d;
+            font-family: 'Cormorant Garamond', 'Cinzel', 'Garamond', 'Times New Roman', serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.8);
+            border: 3px solid #ff6b9d;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .title {
+            font-size: 2.5em;
+            color: #ff6b9d;
+            text-shadow: 2px 2px #000;
+            margin: 0;
+            animation: glow 2s ease-in-out infinite alternate;
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 2px 2px #000, 0 0 10px #ff6b9d; }
+            to { text-shadow: 2px 2px #000, 0 0 20px #ff6b9d, 0 0 30px #ff6b9d; }
+        }
+
+        .visitor-counter {
+            background: #000;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            padding: 5px 10px;
+            border: 1px solid #0f0;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .status {
+            background: #333;
+            border: 1px solid #ff6b9d;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .mood {
+            font-size: 20px;
+            margin: 0 5px;
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* MUSIC PLAYER - SMALLER */
+        .music-player {
+            background: linear-gradient(45deg, #333, #555);
+            border: 2px solid #ff6b9d;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 15px 0;
+            text-align: center;
+            max-width: 350px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .music-player h3 {
+            margin: 5px 0;
+            font-size: 1.1em;
+        }
+
+        .play-button {
+            background: linear-gradient(45deg, #ff6b9d, #ff8fab);
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px #ff6b9d;
+        }
+
+        .volume-control {
+            margin: 5px;
+            font-size: 12px;
+        }
+
+        .volume-slider {
+            width: 80px;
+            margin: 0 5px;
+        }
+
+        .now-playing {
+            color: #fff;
+            font-size: 11px;
+            margin-top: 5px;
+            animation: marquee 10s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* MOON PHASE CALENDAR - CENTER OF PAGE */
+        .moon-phase-calendar {
+            background: rgba(20, 20, 40, 0.9);
+            border: 3px solid #ff6b9d;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(255, 107, 157, 0.3);
+        }
+
+        .moon-phase-calendar h3 {
+            color: #ff6b9d;
+            margin-bottom: 15px;
+            font-style: italic;
+            font-size: 1.4em;
+        }
+
+        .current-phase-display {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #ff6b9d;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 1.1em;
+        }
+
+        .moon-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .moon-stat {
+            background: rgba(255, 107, 157, 0.1);
+            border: 1px solid rgba(255, 107, 157, 0.3);
+            border-radius: 5px;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .zodiac-sign {
+            font-size: 1.2em;
+            margin: 0 5px;
+        }
+
+        .moon-phases {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .moon-phase {
+            background: rgba(51, 51, 51, 0.8);
+            border: 2px solid #666;
+            border-radius: 10px;
+            padding: 12px 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .moon-phase:hover {
+            border-color: #ff6b9d;
+            transform: scale(1.05);
+            background: rgba(80, 80, 80, 0.8);
+        }
+
+        .moon-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .moon-name {
+            font-size: 11px;
+            color: #ccc;
+            font-weight: bold;
+        }
+
+        .current-moon {
+            background: rgba(255, 107, 157, 0.2) !important;
+            border-color: #ff6b9d !important;
+            animation: moonGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes moonGlow {
+            from { box-shadow: 0 0 8px #ff6b9d; }
+            to { box-shadow: 0 0 20px #ff6b9d, 0 0 30px rgba(255, 107, 157, 0.4); }
+        }
+
+        .sidebar {
+            float: right;
+            width: 200px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #ff6b9d;
+            padding: 15px;
+            margin-left: 20px;
+            border-radius: 5px;
+        }
+
+        .sidebar h3 {
+            color: #ff6b9d;
+            margin-top: 0;
+        }
+
+        .main-content {
+            overflow: hidden;
+        }
+
+        .content {
+            background: rgba(51, 51, 51, 0.8);
+            border: 1px solid #ff6b9d;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-  <a href="https://www.cursors-4u.com/cursor/2018/02/17/falling-rose-petals.html" target="_blank" title="Falling Rose Petals">
-    <img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Falling Rose Petals" style="position:absolute; top: 0px; right: 0px;" />
-  </a>
-
-  <h1>Welcome to Château de Minuit</h1>
-
-  <div class="music-player">
-    <h3>Clair de Lune – Claude Debussy</h3>
-    <audio controls>
-      <source src="https://upload.wikimedia.org/wikipedia/commons/0/05/Claude_Debussy_-_Suite_bergamasque_-_3._Clair_de_lune.ogg" type="audio/ogg">
-      <i>Alas, no melody may reach thee. Try another browser, dear guest.</i>
-    </audio>
-  </div>
-
-  <div class="overlay">
-    <div class="grid">
-      <div class="section">
-        <h2>Moon Phase</h2>
-        <div class="moon-phase">
-          <iframe src="https://www.moongiant.com/phase/today/"></iframe>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">🏰 Château de Minuit 🏰</h1>
+            <div class="visitor-counter">Visitors: <span id="counter">001337</span></div>
+            <div class="status">
+                Status: <span class="blink">Online</span> | 
+                Mood: <span class="mood">🦇</span> Mysterious |
+                Last Updated: <span id="lastUpdated"></span>
+            </div>
         </div>
-      </div>
 
-      <div class="section">
-        <h2>Art Gallery</h2>
-        <img class="gallery" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwQDAwQEAwQFBAQFBgoHBgYGBg0JCggKDw0QEA8NDw4RExgUERIXEg4PFRwVFxkZGxsbEBQdHx0aHxgaGxr/2wBDAQQFBQYFBgwHBwwaEQ8RGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaG..." alt="Gothic Castle" />
-      </div>
+        <!-- SMALLER MUSIC PLAYER -->
+        <div class="music-player">
+            <h3>🎵 Now Playing 🎵</h3>
+            <button class="play-button" id="playBtn">▶️</button>
+            <div class="volume-control">
+                🔊 <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50">
+            </div>
+            <div class="now-playing" id="nowPlaying">
+                ♪ Click play to start your gothic journey ♪
+            </div>
+            <audio id="audioPlayer" loop>
+                <source src="https://www.soundjay.com/misc/sounds-824.mp3" type="audio/mpeg">
+                <source src="audio/gothic-ambience.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
 
-      <div class="section">
-        <h2>Words of Wisdom</h2>
-        <div class="quote">“Be still, and know that I am God.” – Psalm 46:10</div>
-        <div class="quote">“The world is full of magic things, patiently waiting for our senses to grow sharper.” – W.B. Yeats</div>
-        <div class="quote">“Beauty is truth, truth beauty,—that is all Ye know on earth, and all ye need to know.” – John Keats</div>
-      </div>
+        <!-- MOON PHASE CALENDAR - BIG AND CENTERED -->
+        <div class="moon-phase-calendar">
+            <h3>🌙 Lunar Phases of Château de Minuit 🌙</h3>
+            <div class="current-phase-display">
+                <strong>Current Phase:</strong> <span id="todayPhase">Loading...</span>
+                <div class="moon-details">
+                    <div class="moon-stat">
+                        <strong>Illumination:</strong><br><span id="illumination">0%</span>
+                    </div>
+                    <div class="moon-stat">
+                        <strong>Moon in:</strong><br><span class="zodiac-sign" id="zodiacSign">♈</span> <span id="zodiacName">Aries</span>
+                    </div>
+                </div>
+            </div>
+            <div class="moon-phases">
+                <div class="moon-phase" id="newMoon">
+                    <div class="moon-icon">🌑</div>
+                    <div class="moon-name">New Moon</div>
+                </div>
+                <div class="moon-phase" id="waxingCrescent">
+                    <div class="moon-icon">🌒</div>
+                    <div class="moon-name">Waxing Crescent</div>
+                </div>
+                <div class="moon-phase" id="firstQuarter">
+                    <div class="moon-icon">🌓</div>
+                    <div class="moon-name">First Quarter</div>
+                </div>
+                <div class="moon-phase" id="waxingGibbous">
+                    <div class="moon-icon">🌔</div>
+                    <div class="moon-name">Waxing Gibbous</div>
+                </div>
+                <div class="moon-phase" id="fullMoon">
+                    <div class="moon-icon">🌕</div>
+                    <div class="moon-name">Full Moon</div>
+                </div>
+                <div class="moon-phase" id="waningGibbous">
+                    <div class="moon-icon">🌖</div>
+                    <div class="moon-name">Waning Gibbous</div>
+                </div>
+                <div class="moon-phase" id="lastQuarter">
+                    <div class="moon-icon">🌗</div>
+                    <div class="moon-name">Last Quarter</div>
+                </div>
+                <div class="moon-phase" id="waningCrescent">
+                    <div class="moon-icon">🌘</div>
+                    <div class="moon-name">Waning Crescent</div>
+                </div>
+            </div>
+        </div>
 
-      <div class="section">
-        <h2>Mood Board</h2>
-        <p>A blend of lace, velvet, parchment, perfume bottles, crescent moons, and ancient texts. You’ll find the essence of the Rococo vampire enchantress, who reads scripture by candlelight and sips rose tea in her tower above the sleeping world. This is a space shared with your devoted butler, who ensures the pages stay dry, the ink flows steadily, and the music never ceases to whisper.</p>
-      </div>
+        <div class="main-content">
+            <div class="sidebar">
+                <h3>🕷️ My Profile 🕷️</h3>
+                <p><strong>Age:</strong> Eternal</p>
+                <p><strong>Location:</strong> The Shadows</p>
+                <p><strong>Interests:</strong> Gothic architecture, midnight walks, vintage horror films</p>
+                
+                <h3>🦇 Top Friends 🦇</h3>
+                <ul>
+                    <li>Edgar Allan Poe</li>
+                    <li>Bram Stoker</li>
+                    <li>Mary Shelley</li>
+                </ul>
+
+                <h3>📜 Random Quote 📜</h3>
+                <p><em>"In the depths of winter, I finally learned that within me there lay an invincible summer."</em></p>
+            </div>
+
+            <div class="content">
+                <h2>Welcome to My Dark Realm</h2>
+                <p>Greetings, fellow creatures of the night! Welcome to my humble digital abode where shadows dance and mysteries unfold.</p>
+                
+                <p class="blink">✨ New! ✨</p> Check out my latest blog post about exploring abandoned castles!
+                
+                <h3>About This Castle</h3>
+                <p>This château has stood for centuries, witnessing countless stories of love, loss, and supernatural encounters. Each room holds secrets waiting to be discovered...</p>
+                
+                <h3>🕯️ Recent Updates 🕯️</h3>
+                <ul>
+                    <li>Added new background music</li>
+                    <li>Updated photo gallery</li>
+                    <li>Fixed the flickering candles animation</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="clear: both; text-align: center; margin-top: 30px;">
+            <p>© 2024 Château de Minuit | <span class="blink">Under Construction</span> 🚧</p>
+        </div>
     </div>
-  </div>
+
+    <script>
+        // Moon phase functionality
+        const moonPhases = [
+            { name: 'New Moon', id: 'newMoon', icon: '🌑', illumination: 0 },
+            { name: 'Waxing Crescent', id: 'waxingCrescent', icon: '🌒', illumination: 25 },
+            { name: 'First Quarter', id: 'firstQuarter', icon: '🌓', illumination: 50 },
+            { name: 'Waxing Gibbous', id: 'waxingGibbous', icon: '🌔', illumination: 75 },
+            { name: 'Full Moon', id: 'fullMoon', icon: '🌕', illumination: 100 },
+            { name: 'Waning Gibbous', id: 'waningGibbous', icon: '🌖', illumination: 75 },
+            { name: 'Last Quarter', id: 'lastQuarter', icon: '🌗', illumination: 50 },
+            { name: 'Waning Crescent', id: 'waningCrescent', icon: '🌘', illumination: 25 }
+        ];
+
+        const zodiacSigns = [
+            { name: 'Aries', symbol: '♈', element: 'Fire' },
+            { name: 'Taurus', symbol: '♉', element: 'Earth' },
+            { name: 'Gemini', symbol: '♊', element: 'Air' },
+            { name: 'Cancer', symbol: '♋', element: 'Water' },
+            { name: 'Leo', symbol: '♌', element: 'Fire' },
+            { name: 'Virgo', symbol: '♍', element: 'Earth' },
+            { name: 'Libra', symbol: '♎', element: 'Air' },
+            { name: 'Scorpio', symbol: '♏', element: 'Water' },
+            { name: 'Sagittarius', symbol: '♐', element: 'Fire' },
+            { name: 'Capricorn', symbol: '♑', element: 'Earth' },
+            { name: 'Aquarius', symbol: '♒', element: 'Air' },
+            { name: 'Pisces', symbol: '♓', element: 'Water' }
+        ];
+
+        // Calculate current moon phase (simplified)
+        function getCurrentMoonPhase() {
+            const now = new Date();
+            const dayOfMonth = now.getDate();
+            const phaseIndex = Math.floor((dayOfMonth / 29.5) * 8) % 8;
+            return moonPhases[phaseIndex];
+        }
+
+        // Calculate current zodiac sign for moon (simplified - changes every ~2.5 days)
+        function getCurrentZodiacSign() {
+            const now = new Date();
+            const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+            const signIndex = Math.floor((dayOfYear / 2.5) % 12);
+            return zodiacSigns[signIndex];
+        }
+
+        // Calculate illumination percentage with some variation
+        function getIlluminationPercentage(baseIllumination) {
+            const variation = Math.floor(Math.random() * 10) - 5; // +/- 5%
+            const illumination = Math.max(0, Math.min(100, baseIllumination + variation));
+            return illumination;
+        }
+
+        // Set current moon phase and details
+        const currentPhase = getCurrentMoonPhase();
+        const currentZodiac = getCurrentZodiacSign();
+        const illuminationPercent = getIlluminationPercentage(currentPhase.illumination);
+        
+        document.getElementById('todayPhase').textContent = currentPhase.name + ' ' + currentPhase.icon;
+        document.getElementById('illumination').textContent = illuminationPercent + '%';
+        document.getElementById('zodiacSign').textContent = currentZodiac.symbol;
+        document.getElementById('zodiacName').textContent = currentZodiac.name;
+        document.getElementById(currentPhase.id).classList.add('current-moon');
+
+        // Music player functionality
+        const playBtn = document.getElementById('playBtn');
+        const audioPlayer = document.getElementById('audioPlayer');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const nowPlaying = document.getElementById('nowPlaying');
+        const counter = document.getElementById('counter');
+        const lastUpdated = document.getElementById('lastUpdated');
+
+        let isPlaying = false;
+
+        // Update last updated date
+        lastUpdated.textContent = new Date().toLocaleDateString();
+
+        // Animate visitor counter
+        let count = 1337;
+        setInterval(() => {
+            count += Math.floor(Math.random() * 3) + 1;
+            counter.textContent = count.toString().padStart(6, '0');
+        }, 30000);
+
+        playBtn.addEventListener('click', () => {
+            if (!isPlaying) {
+                audioPlayer.play().then(() => {
+                    isPlaying = true;
+                    playBtn.textContent = '⏸️';
+                    nowPlaying.textContent = '♪ Gothic Ambience - Château de Minuit ♪';
+                }).catch(e => {
+                    console.log('Audio play failed:', e);
+                    nowPlaying.textContent = '♪ Audio not available - but the atmosphere remains! ♪';
+                });
+            } else {
+                audioPlayer.pause();
+                isPlaying = false;
+                playBtn.textContent = '▶️';
+                nowPlaying.textContent = '♪ Music paused - silence fills the castle ♪';
+            }
+        });
+
+        volumeSlider.addEventListener('input', (e) => {
+            audioPlayer.volume = e.target.value / 100;
+        });
+
+        // Set initial volume
+        audioPlayer.volume = 0.5;
+
+        // Add some interactive elements
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() < 0.001) {
+                // Rare random bat emoji
+                const bat = document.createElement('div');
+                bat.textContent = '🦇';
+                bat.style.position = 'fixed';
+                bat.style.left = e.clientX + 'px';
+                bat.style.top = e.clientY + 'px';
+                bat.style.pointerEvents = 'none';
+                bat.style.fontSize = '20px';
+                bat.style.zIndex = '1000';
+                document.body.appendChild(bat);
+                
+                setTimeout(() => {
+                    if (bat.parentNode) {
+                        bat.parentNode.removeChild(bat);
+                    }
+                }, 2000);
+            }
+        });
+    </script>
 </body>
 </html>
